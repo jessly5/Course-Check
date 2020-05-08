@@ -2,7 +2,7 @@
 import json
 import urllib.request
 from bs4 import BeautifulSoup
-from datetime import datetime
+
 
 '''
 format example:
@@ -12,10 +12,12 @@ format example:
         'courseDetails': 'First year computer science',
         'coursePrerequisites': [
                 'CSC108H5'
-        ]
+        ],
+        'tags': 'programming'
     }
 }
 '''
+
 
 def scrape():
     print('collecting data')
@@ -31,6 +33,7 @@ def scrape():
     result = [course_titles, course_details]
     print('finished collecting data')
     return result
+
 
 def modify(result):
     data = {}
@@ -57,13 +60,27 @@ def modify(result):
                 course_prerequisites = course_detail[course_prerequisites_index+len('Prerequisites:')+1:]
             else:
                 course_prerequisites = "None"
+
+            tags = tag(course_detail)
             
-            data[course_code] = {'courseTitleFull': course_title_full, 'courseDetails': course_detail, 'coursePrerequisites': course_prerequisites}
+            data[course_code] = {'courseTitleFull': course_title_full, 'courseDetails': course_detail, 'coursePrerequisites': course_prerequisites, 'tags': tags}
 
             print('formatting ', i+1, ' of ', len(course_titles), ' courses')
         
     print("------\nfinished formatting data, skipped ", skip)
     return data
+
+
+def tag(course_detail):
+    tags = ['coding', 'software', 'design', 'experience', 'perception', 'research', 'political', 'ethics', 'managing', 'media', 'mass', 'advertising']
+    relevant_tags = []
+    
+    for t in tags:
+        if t in course_detail:
+            relevant_tags.append(t)
+    
+    return relevant_tags
+
 
 def save(data):
     print("saving json")
@@ -71,10 +88,12 @@ def save(data):
         json.dump(data, output)
     print("finished saving json")
 
+
 def main():
     print('script started')
     result = scrape()
     save(modify(result))
     print('script completed')
+
 
 main()
