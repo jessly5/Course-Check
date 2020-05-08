@@ -14,3 +14,5 @@ TODO:
 ⬜ Add in prerequisite filter
 
 ⬜ Ask for feedback
+
+⬜ Expand the courses to all programs (or maybe just CS from UTM and UTSG)
