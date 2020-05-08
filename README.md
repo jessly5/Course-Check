@@ -1,18 +1,18 @@
 # Course-Check
 A list of courses that filters by prerequisite and topic. Focus: CCIT major.
 
-TODO:
+### TODO:
 
-⬜ Make a script to scrape the data into a JSON
+- [ ] Make a script to scrape the data into a JSON
 
-⬜ Edit script to add in topics
+- [ ] Edit script to add in topics
 
-⬜ Use Vue to do stuff to "Vue" the data (haha)
+- [ ] Use Vue to do stuff to "Vue" the data (haha)
 
-⬜ Add in topics filter
+- [ ] Add in topics filter
 
-⬜ Add in prerequisite filter
+- [ ] Add in prerequisite filter
 
-⬜ Ask for feedback
+- [ ] Ask for feedback
 
-⬜ Expand the courses to all programs (or maybe just CS from UTM and UTSG)
+- [ ] Expand the courses to all programs (or maybe just CS from UTM and UTSG)
