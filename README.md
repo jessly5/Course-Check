@@ -5,7 +5,7 @@ A list of courses that filters by prerequisite and topic. Focus: CCIT major.
 
 - [x] Make a script to scrape the data into a JSON
 
-- [ ] Edit script to add in topics
+- [x] Edit script to add in topics
 
 - [ ] Use Vue to do stuff to "Vue" the data (haha)
 
