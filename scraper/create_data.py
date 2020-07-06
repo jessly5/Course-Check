@@ -7,15 +7,16 @@ from bs4 import BeautifulSoup
 
 '''
 format example:
-{
-    'CSC148H5': {
-        'courseTitleFull': 'CSC148 Introduction to Computer Science',
-        'courseDetails': 'First year computer science',
-        'coursePrerequisites': [
-                'CSC108H5'
-        ],
-        'tags': 'Programming'
-    }
+
+}
+	"CCT352H5": {
+		"courseTitleFull": "CCT352H5F - History and Practice of Design (SH) (SSc)",
+		"courseDetails": "This course examines the historical development of communication design from the industrial revolution to the present. The student will focus on the emergence of design practice and theory in changing economic, technological and social contexts. [36L]Prerequisites: CCT204H5",
+		"coursePrerequisites": "CCT204H5",
+		"tags": [
+			"Design"
+		]
+	}
 }
 
 '''
@@ -74,7 +75,7 @@ def modify(result):
             else:
                 course_prerequisites = "None"
 
-            tags = tag(course_detail)
+            tags = tag(course_title_full, course_detail)
             
             data[course_code] = {'courseTitleFull': course_title_full, 'courseDetails': course_detail, 'coursePrerequisites': course_prerequisites, 'tags': tags}
 
@@ -84,7 +85,7 @@ def modify(result):
     return data
 
 
-def tag(course_detail):
+def tag(course_title_full, course_detail):
     regex_tags = ['[Pp]rogram', '[Ss]oftware', '[Dd]esign', '[Ii]nternship', '[Hh]uman', '[Rr]esearch', '[Pp]olit', \
             '[Ee]xperiential', '[Mm]anag', '[Mm]edia', '[Mm]arket', '[Aa]dvertis']
     tags = ['Programming', 'Software', 'Design', 'Internship', 'Human', 'Research', 'Politics', \
@@ -92,8 +93,9 @@ def tag(course_detail):
     relevant_tags = []
     
     for i in range (len(regex_tags)):
-        search_result = re.search(regex_tags[i], course_detail)
-        if (search_result):
+        search_result_title = re.search(regex_tags[i], course_title_full)
+        search_result_detail = re.search(regex_tags[i], course_detail)
+        if (search_result_title or search_result_detail):
             relevant_tags.append(tags[i])
 
     relevant_tags = relevant_tags if relevant_tags else "No Tags"
