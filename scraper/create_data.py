@@ -87,9 +87,9 @@ def modify(result):
 
 def tag(course_title_full, course_detail):
     regex_tags = ['[Pp]rogram', '[Ss]oftware', '[Dd]esign', '[Ii]nternship', '[Hh]uman', '[Rr]esearch', '[Pp]olit', \
-            '[Ee]xperiential', '[Mm]anag', '[Mm]edia', '[Mm]arket', '[Aa]dvertis']
+            '[Ee]xperiential', '[Mm]anag', '[Mm]edia', '[Mm]arket', '[Aa]dvertis', '[Gg]ame']
     tags = ['Programming', 'Software', 'Design', 'Internship', 'Human', 'Research', 'Politics', \
-            'Experiential', 'Management', 'Media', 'Market', 'Advertising']
+            'Experiential', 'Management', 'Media', 'Market', 'Advertising', 'Game']
     relevant_tags = []
     
     for i in range (len(regex_tags)):
