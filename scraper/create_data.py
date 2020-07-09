@@ -98,7 +98,7 @@ def tag(course_title_full, course_detail):
         if (search_result_title or search_result_detail):
             relevant_tags.append(tags[i])
 
-    relevant_tags = relevant_tags if relevant_tags else "None"
+    relevant_tags = relevant_tags if relevant_tags else ['None']
     return relevant_tags
 
 
