@@ -3,12 +3,12 @@
 	<ThePreface/>
 	<div>
 		<CourseCard 
-			v-for="data in courseData"
-			v-bind:key="data.courseTitleFull"
-			v-bind:courseTitleFull="data.courseTitleFull"
-			v-bind:courseDetails="data.courseDetails"
-			v-bind:coursePrerequisites="data.coursePrerequisites"
-			v-bind:tags="data.tags"
+			v-for="course in Object.keys(courseData).sort()"
+			v-bind:key="courseData[course].courseTitleFull"
+			v-bind:courseTitleFull="courseData[course].courseTitleFull"
+			v-bind:courseDetails="courseData[course].courseDetails"
+			v-bind:coursePrerequisites="courseData[course].coursePrerequisites"
+			v-bind:tags="courseData[course].tags"
 		/>
 	</div>
   </div>
