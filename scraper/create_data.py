@@ -10,7 +10,7 @@ format example:
 
 }
 	"CCT352H5": {
-		"courseTitleFull": "CCT352H5F - History and Practice of Design (SH) (SSc)",
+		"courseTitleFull": "CCT352H5 - History and Practice of Design (SH) (SSc)",
 		"courseDetails": "This course examines the historical development of communication design from the industrial revolution to the present. The student will focus on the emergence of design practice and theory in changing economic, technological and social contexts. [36L]Prerequisites: CCT204H5",
 		"coursePrerequisites": "CCT204H5",
 		"tags": [
@@ -76,8 +76,10 @@ def modify(result):
                 course_prerequisites = "None"
 
             tags = tag(course_title_full, course_detail)
+
+            modified_title = course_code + ' ' + course_title_full[10:]
             
-            data[course_code] = {'courseTitleFull': course_title_full, 'courseDetails': course_detail, 'coursePrerequisites': course_prerequisites, 'tags': tags}
+            data[course_code] = {'courseTitleFull': modified_title, 'courseDetails': course_detail, 'coursePrerequisites': course_prerequisites, 'tags': tags}
 
             print('formatting ', i+1, ' of ', len(course_titles), ' courses')
         
