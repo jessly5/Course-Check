@@ -33,7 +33,7 @@ def scrape():
     course_titles = soup.find_all('h4')
     course_details = soup.find_all('div', attrs={'class': 'infoCourseDetails'})
     course_control = soup.find_all('div', attrs={'class': 'enrollment_control'})
-
+    
     result = [course_titles, course_details, course_control]
     print('finished collecting data')
     return result
@@ -82,7 +82,16 @@ def modify(result):
             data[course_code] = {'courseTitleFull': modified_title, 'courseDetails': course_detail, 'coursePrerequisites': course_prerequisites, 'tags': tags}
 
             print('formatting ', i+1, ' of ', len(course_titles), ' courses')
-        
+
+    #edge case for summer only course
+    modified_title = "CCT423H5 - Game Development Project (SH) (HUM SSc) SUMMER ONLY"
+    course_detail = "This course will provide the opportunity to develop a practical understanding of the game development cycle. Students will design and"+\
+                    " develop an original game in support of a specific narrative, set of rules or play mechanics. [36P] Prerequisites: CCT311H5 or CCT312H5"
+    course_prerequisites = "Prerequisites: CCT311H5 or CCT312H5"
+    tags = tag(modified_title, course_detail)
+    data['CCT423H5'] = {'courseTitleFull': modified_title, 'courseDetails': course_detail, 'coursePrerequisites': course_prerequisites, 'tags': tags}
+    print('formatting special course')
+    
     print("------\nfinished formatting data, skipped ", skip)
     return data
 
