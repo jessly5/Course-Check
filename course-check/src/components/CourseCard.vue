@@ -1,11 +1,12 @@
 <template>
-	<div class="course" v-bind:class="assignYear(courseTitleFull)">
+	<div class="course" v-bind:class="year" v-if=visible>
 		<h3>{{ courseTitleFull }}</h3>
 		<hr>
 		<p class="description"><strong>Description:</strong> {{ courseDetails }}</p>
 		<p><strong>Prerequisites:</strong> {{ coursePrerequisites }}</p>
 		<div class="flex-container"><strong>Tags:</strong>
-			<span class="tag" v-for="t in tags" v-bind:key="t">{{ t }}
+			<span class="tag" v-for="t in tags" v-bind:key="t">
+			{{ t }}
 			</span>
 		</div>
 	</div>
@@ -18,13 +19,15 @@ export default {
 		courseTitleFull: String,
 		courseDetails: String,
 		coursePrerequisites: String,
-		tags: Array
+		tags: Array,
+		visible: Boolean
 	},
-	methods: {
-		assignYear: function(courseTitleFull){
-			var years = {'CCT1':'first', 'CCT2':'second', 'CCT3':'third', 'CCT4':'fourth'};
-			var code = courseTitleFull.slice(0, 4);
-			return (years[code] ? years[code] : "other");
+	computed: {
+		year: function(){
+			var years = {'1':'first', '2':'second', '3':'third', '4':'fourth'};
+			// why is courseTitleFull an array? splice is for arrays
+			var firstDigit = this.courseTitleFull.slice(3, 4);
+			return years[firstDigit];
 		}
 	}
 }
@@ -65,8 +68,5 @@ hr {
 }
 .fourth {
 	background: #CFCCFF;
-}
-.other {
-	background: #FFBFED;
 }
 </style>
