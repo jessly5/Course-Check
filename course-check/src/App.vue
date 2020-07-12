@@ -17,7 +17,7 @@
 			v-bind:visible="isFilteredOut(course)"
 		/>
 	</div>
-	<footer><a href="https://github.com/jessly5/Course-Check"><img src="@/assets/GitHub_Logo.png" alt="GitHub Logo" height="30px"></a></footer>
+	<footer><a href="https://github.com/jessly5/Course-Check"><img src="./assets/GitHub_Logo.png" alt="GitHub Logo" height="30px"></a></footer>
   </div>
 </template>
 
