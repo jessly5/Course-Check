@@ -11,7 +11,7 @@ A list of courses that filters by prerequisite and topic. Focus: CCIT major.
 
 - [x] Add in year filter
 
-- [ ] Add in topics filter
+- [x] Add in topics filter
 
 - [ ] Add in prerequisite filter
 
