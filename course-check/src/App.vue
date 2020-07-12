@@ -2,12 +2,13 @@
   <div id="app">
 	<ThePreface/>
 	<div>
-		
-		<CourseFilter v-bind:filterSection="this.yearFilters"/>
-		<CourseFilter v-bind:filterSection="this.topicFilters"/>
+		<div>
+			<CourseFilter v-bind:filterSection="this.yearFilters" filterTitle="Filter by year:"/>
+			<CourseFilter v-bind:filterSection="this.topicFilters" filterTitle="Filter by topic:"/>
+		</div>
 
 		<CourseCard 
-			v-for="course in Object.keys(courseData).sort()"
+			v-for="course in courseKeys"
 			v-bind:key="courseData[course].courseTitleFull"
 			v-bind:courseTitleFull="courseData[course].courseTitleFull"
 			v-bind:courseDetails="courseData[course].courseDetails"
@@ -16,6 +17,7 @@
 			v-bind:visible="isFilteredOut(course)"
 		/>
 	</div>
+	<footer><a href="https://github.com/jessly5/Course-Check"><img src="@/assets/GitHub_Logo.png" alt="GitHub Logo" height="30px"></a></footer>
   </div>
 </template>
 
@@ -49,7 +51,8 @@ export default {
 				{id: "Politics", text: "Politics", value: false},
 				{id: "Programming", text: "Programming", value: false},
 				{id: "Research", text: "Research", value: false},
-				{id: "Software", text: "Software", value: false}
+				{id: "Software", text: "Software", value: false},
+				{id: "None", text: "No Tags", value: false}
 			]
 		}
 	},
@@ -67,21 +70,56 @@ export default {
 		}
 	},
 	computed: {
-		yearFiltersUsed: function(){
+		courseKeys: function(){
+			return Object.keys(courseData).sort();
+		},
+		totalYearFiltersUsed: function(){
 			var total = 0;
 			for (var f in this.yearFilters) {
 				total += this.yearFilters[f].value ? 1 : 0;
 			} return total;
 		},
-		displayCourses: function(){
-			var show = {};
+		applyYearFilters: function(){
+			var list = {};
 			var year;
-			var keys = Object.keys(courseData).sort();
-			for (var k in keys){
-				year = this.getYear(keys[k])-1;
-				show[keys[k]] = this.yearFiltersUsed ==  0 ? true : this.yearFilters[year].value;
+			for (var k in this.courseKeys){
+				year = this.getYear(this.courseKeys[k])-1;
+				list[this.courseKeys[k]] = this.totalYearFiltersUsed ==  0 ? true : this.yearFilters[year].value;
+			} return list;
+		},
+		totalTopicFiltersUsed: function(){
+			var total = 0;
+			for (var f in this.topicFilters) {
+				total += this.topicFilters[f].value ? 1 : 0;
+			} return total;
+		},
+		applyTopicsFilter: function(){
+			var list = {};
+			var topic, courseTags;
+			for (var k in this.courseKeys){
+				for (var t in this.topicFilters){
+					topic = this.topicFilters[t].id;
+					courseTags = this.courseData[this.courseKeys[k]].tags;
+					
+					if (courseTags.includes(topic) && this.topicFilters[t].value){
+						list[this.courseKeys[k]] = true;
+					} else{
+						list[this.courseKeys[k]] = list[this.courseKeys[k]] ? list[this.courseKeys[k]] : false;
+					}
+				}
+			} return list;
+		},
+		displayCourses: function(){
+			if ((this.totalYearFiltersUsed + this.totalTopicFiltersUsed == 0) || (this.totalTopicFiltersUsed == 0)) {
+				return this.applyYearFilters;
+			} if (this.totalYearFiltersUsed == 0){
+				return this.applyTopicsFilter;
 			}
-			return show;
+			
+			var list = {}
+			for (var k in this.courseKeys){
+				list[this.courseKeys[k]] = this.applyYearFilters[this.courseKeys[k]] && this.applyTopicsFilter[this.courseKeys[k]];
+			} return list;
 		}
 	}
 }
@@ -91,5 +129,10 @@ export default {
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	color: #243649;
+}
+footer {
+	text-align: center;
+}
+@media only screen and (max-width: 640px) {
 }
 </style>

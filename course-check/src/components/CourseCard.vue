@@ -39,7 +39,8 @@ export default {
 	border: 1.5px solid #243649;
 	border-radius: 2em;
 	padding: 2em;
-	margin: 1.5em;
+	margin: 1em;
+	float: right;
 }
 .tag {
 	border: 1.5px solid #243649;
@@ -58,15 +59,15 @@ hr {
 	height: 1.5px;
 }
 .first {
-	background: #FFE8BF;
+	background: #F9D7DE;
 }
 .second {
-	background: #BADCE8;
+	background: #FAEBC0;
 }
 .third {
-	background: #A6D1FF;
+	background: #C5EBD8;
 }
 .fourth {
-	background: #CFCCFF;
+	background: #D3D4FA;
 }
 </style>
