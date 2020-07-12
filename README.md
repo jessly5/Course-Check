@@ -9,6 +9,8 @@ A list of courses that filters by prerequisite and topic. Focus: CCIT major.
 
 - [x] Use Vue to do stuff to "Vue" the data (haha)
 
+- [x] Add in year filter
+
 - [ ] Add in topics filter
 
 - [ ] Add in prerequisite filter
