@@ -2,15 +2,9 @@
   <div id="app">
 	<ThePreface/>
 	<div>
-		<div v-for="year in yearFilters" v-bind:key="year.id">
-			<input v-model="year.value" type="checkbox" id="year.id" value="year.id" name="year.id">
-			<label for="year.id">{{ year.text }}</label>
-		</div>
 		
-		<div v-for="topic in topicFilters" v-bind:key="topic.id">
-			<input v-model="topic.value" type="checkbox" id="topic.id" value="topic.id" name="topic.id">
-			<label for="topic.id">{{ topic.id }}</label>
-		</div>
+		<CourseFilter v-bind:filterSection="this.yearFilters"/>
+		<CourseFilter v-bind:filterSection="this.topicFilters"/>
 
 		<CourseCard 
 			v-for="course in Object.keys(courseData).sort()"
@@ -28,6 +22,7 @@
 <script>
 import ThePreface from './components/ThePreface.vue'
 import CourseCard from './components/CourseCard.vue'
+import CourseFilter from './components/CourseFilter.vue'
 import courseData from './json/course-data.json'
 
 export default {
@@ -42,25 +37,26 @@ export default {
 				{id: "fourthYearFilter", text: "4th year", value: false}
 			],
 			topicFilters: [
-				{id: "Advertising", value: false},
-				{id: "Design", value: false},
-				{id: "Experiential", value: false},
-				{id: "Game", value: false},
-				{id: "Human", value: false},
-				{id: "Internship", value: false},
-				{id: "Management", value: false},
-				{id: "Marketing", value: false},
-				{id: "Media", value: false},
-				{id: "Politics", value: false},
-				{id: "Programming", value: false},
-				{id: "Research", value: false},
-				{id: "Software", value: false}
+				{id: "Advertising", text: "Advertising", value: false},
+				{id: "Design", text: "Design", value: false},
+				{id: "Experiential", text: "Experiential", value: false},
+				{id: "Game", text: "Game", value: false},
+				{id: "Human", text: "Human", value: false},
+				{id: "Internship", text: "Internship", value: false},
+				{id: "Management", text: "Management", value: false},
+				{id: "Marketing", text: "Marketing", value: false},
+				{id: "Media", text: "Media", value: false},
+				{id: "Politics", text: "Politics", value: false},
+				{id: "Programming", text: "Programming", value: false},
+				{id: "Research", text: "Research", value: false},
+				{id: "Software", text: "Software", value: false}
 			]
 		}
 	},
 	components: {
 		ThePreface,
-		CourseCard
+		CourseCard,
+		CourseFilter
 	},
 	methods: {
 		isFilteredOut: function(course){
