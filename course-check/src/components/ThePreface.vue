@@ -46,4 +46,9 @@ export default {
 #about:hover {
 	background: #0DBDB4;
 }
+@media only screen and (max-width: 500px) {
+	#about {
+		width: 100%;
+	}
+}
 </style>
