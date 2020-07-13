@@ -181,7 +181,7 @@ footer {
 }
 .container {
 	display: grid;
-	grid-template-columns: 1fr 5fr;  
+	grid-template-columns: auto auto;
 }
 @media only screen and (max-width: 640px) {
 	#filters {
@@ -193,7 +193,7 @@ footer {
 	}
 	.container {
 		display: static;
-		grid-template-columns: 1fr;  
+		grid-template-columns: auto;
 	}
 }
 </style>
