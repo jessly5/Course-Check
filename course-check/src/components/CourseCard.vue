@@ -41,6 +41,7 @@ export default {
 	padding: 2em;
 	margin: 1em;
 	float: right;
+	box-shadow: 5px 5px 5px #BBC7E0;
 }
 .tag {
 	border: 1.5px solid #243649;
