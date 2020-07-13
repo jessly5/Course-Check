@@ -6,8 +6,16 @@
 			<div id="filters">
 				<h2 class="filterLabel">I'm looking for:</h2>
 				
-				<CourseFilter v-bind:filterSection="this.yearFilters" filterTitle="Filter by year:"/>
-				<CourseFilter v-bind:filterSection="this.topicFilters" filterTitle="Filter by topic:"/>
+				<CourseFilter 
+					v-bind:filterGroupName="year"
+					v-bind:filterTitle="'Filter by year:'"
+					v-bind:filterOptions="this.yearFilters"
+				/>
+				<CourseFilter 
+					v-bind:filterGroupName="topic"
+					v-bind:filterTitle="'Filter by topic:'"
+					v-bind:filterOptions="this.topicFilters" 
+				/>
 			</div>
 			
 			<!--<span><a href="#filters"><button id="stickyTop">Back to Top</button></a></span>-->

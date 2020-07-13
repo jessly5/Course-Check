@@ -1,8 +1,8 @@
 <template>
 	<div class="filterGroup">
 		<label><strong>{{ filterTitle }}</strong></label><br><br>
-		<div v-for="filter in filterSection" v-bind:key="filter.id" class="filter">
-			<input v-model="filter.value" type="checkbox" v-bind:id="filter.id" v-bind:value="filter.id" v-bind:name="filter.id">
+		<div v-for="filter in filterOptions" v-bind:key="filter.id" class="filter">
+			<input v-model="filter.value" type="checkbox" v-bind:id="filter.id" v-bind:value="filter.id" v-bind:name="filterGroupName">
 			<label v-bind:for="filter.id">{{ filter.text }}</label>
 		</div>
 	</div>
@@ -12,8 +12,9 @@
 export default {
 	name: 'CourseFilter',
 	props: {
-		filterSection: Array,
-		filterTitle: String
+		filterGroupName: String,
+		filterTitle: String,
+		filterOptions: Array
 	}
 }
 </script>
