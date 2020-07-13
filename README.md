@@ -9,11 +9,17 @@ A list of courses that filters by year, topic, and prerequisite. Focus: CCIT maj
 
 - [x] Use Vue to do stuff to "Vue" the data (haha)
 
-- [x] Add in year filter
+- [x] Year filter
 
-- [x] Add in topics filter
+- [x] Topics filter
 
-- [ ] Add in prerequisite filter
+- [ ] Prerequisite filter
+
+- [ ] Quantify the data in numbers and charts
+
+- [ ] Notes section (create, delete, update)
+
+- [ ] Course cart (add and delete) 
 
 - [ ] Ask for feedback
 
