@@ -7,18 +7,18 @@
 				<h2 class="filterLabel">I'm looking for:</h2>
 				
 				<CourseFilter 
-					v-bind:filterGroupName="year"
+					v-bind:filterGroupName="'year'"
 					v-bind:filterTitle="'Filter by year:'"
 					v-bind:filterOptions="this.yearFilters"
 				/>
 				<CourseFilter 
-					v-bind:filterGroupName="topic"
+					v-bind:filterGroupName="'topic'"
 					v-bind:filterTitle="'Filter by topic:'"
 					v-bind:filterOptions="this.topicFilters" 
 				/>
+				
+				<span><a href="#filters"><button id="stickyTop">Back to Top</button></a></span>
 			</div>
-			
-			<!--<span><a href="#filters"><button id="stickyTop">Back to Top</button></a></span>-->
 			
 			<div>
 				<h2 class="searchLabel">Search Results</h2>
@@ -173,7 +173,7 @@ footer {
 	color: #F7F9F9;
 	padding: 0.7em;
 	font-size: 1em;
-	float: right;
+	float: left;
 	margin: 1em 1em 0 0;
 }
 #stickyTop:hover {
