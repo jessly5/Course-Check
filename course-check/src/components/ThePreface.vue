@@ -1,5 +1,5 @@
 <template>
-	<div class="preface">
+	<div>
 		<h1>Course Checker</h1>
 		
 		<button type="button" id="about" v-on:click="filterCollapse">About</button>
@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style scoped>
-.preface {
-	margin: 1.5em;
-}
 #about {
 	color: #F7F9F9;
 	background: #243649;
@@ -42,11 +39,15 @@ export default {
 	border-radius: 1em;
 	padding: 0.7em;
 	font-size: 1em;
+	margin: 0 0 2em 0;
 }
 #about:hover {
 	background: #0DBDB4;
 }
-@media only screen and (max-width: 500px) {
+#text {
+	margin: 0 0 3em 0;
+}
+@media only screen and (max-width: 640px) {
 	#about {
 		width: 100%;
 	}

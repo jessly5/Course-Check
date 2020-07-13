@@ -1,25 +1,33 @@
 <template>
 	<div id="app">
 		<ThePreface/>
-		<div>
+		
+		<div class="container">
 			<div id="filters">
+				<h2 class="filterLabel">I'm looking for:</h2>
+				
 				<CourseFilter v-bind:filterSection="this.yearFilters" filterTitle="Filter by year:"/>
 				<CourseFilter v-bind:filterSection="this.topicFilters" filterTitle="Filter by topic:"/>
 			</div>
-
-			<CourseCard 
-				v-for="course in courseKeys"
-				v-bind:key="courseData[course].courseTitleFull"
-				v-bind:courseTitleFull="courseData[course].courseTitleFull"
-				v-bind:courseDetails="courseData[course].courseDetails"
-				v-bind:coursePrerequisites="courseData[course].coursePrerequisites"
-				v-bind:tags="courseData[course].tags"
-				v-bind:visible="isFilteredOut(course)"
-			/>
+			
+			<!--<span><a href="#filters"><button id="stickyTop">Back to Top</button></a></span>-->
+			
+			<div>
+				<h2 class="searchLabel">Search Results</h2>
+				
+				<CourseCard 
+					v-for="course in courseKeys"
+					v-bind:key="courseData[course].courseTitleFull"
+					v-bind:courseTitleFull="courseData[course].courseTitleFull"
+					v-bind:courseDetails="courseData[course].courseDetails"
+					v-bind:coursePrerequisites="courseData[course].coursePrerequisites"
+					v-bind:tags="courseData[course].tags"
+					v-bind:visible="isFilteredOut(course)"
+				/>
+			</div>
 		</div>
-		<div>
-			<footer><a href="https://github.com/jessly5/Course-Check"><img src="./assets/GitHub_Logo.png" alt="GitHub Logo" height="30px"></a></footer>
-		</div>
+		
+		<footer><a href="https://github.com/jessly5/Course-Check"><img src="./assets/GitHub_Logo.png" alt="GitHub Logo" height="30px"></a></footer>
 	</div>
 </template>
 
@@ -87,7 +95,8 @@ export default {
 			for (var k in this.courseKeys){
 				year = this.getYear(this.courseKeys[k])-1;
 				list[this.courseKeys[k]] = this.totalYearFiltersUsed ==  0 ? true : this.yearFilters[year].value;
-			} return list;
+			}
+			return list;
 		},
 		totalTopicFiltersUsed: function(){
 			var total = 0;
@@ -136,14 +145,47 @@ footer {
 	text-align: center;
 	clear: both;
 }
-#filters{
-	width: 30%;
-	float: left;
+#filters {
+	margin-right: 1em;
+	width: 200px;
 }
-@media only screen and (max-width: 700px) {
-	#filters{
+.filterLabel {
+}
+.searchLabel {
+	text-align: right;
+}
+#stickyTop {
+	text-align: center;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 1em;
+	background: #243649;
+	border: none;
+	border-radius: 1em;
+	color: #F7F9F9;
+	padding: 0.7em;
+	font-size: 1em;
+	float: right;
+	margin: 1em 1em 0 0;
+}
+#stickyTop:hover {
+	background: #0DBDB4;
+}
+.container {
+	display: grid;
+	grid-template-columns: 1fr 5fr;  
+}
+@media only screen and (max-width: 640px) {
+	#filters {
 		width: 100%;
+	}
+	.searchLabel {
 		float: none;
+		text-align: left;
+	}
+	.container {
+		display: static;
+		grid-template-columns: 1fr;  
 	}
 }
 </style>

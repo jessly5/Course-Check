@@ -39,17 +39,8 @@ export default {
 	border: 1.5px solid #243649;
 	border-radius: 2em;
 	padding: 2em;
-	margin: 1em;
-	float: right;
+	margin: 0 0 1em 0;
 	box-shadow: 5px 5px 5px #BBC7E0;
-	float: right;
-	width: 55%;
-}
-@media only screen and (max-width: 700px) {
-	.course{
-		float: none;
-		width: auto;
-	}
 }
 .tag {
 	border: 1.5px solid #243649;
