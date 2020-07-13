@@ -2,8 +2,8 @@
 	<div class="filterGroup">
 		<label><strong>{{ filterTitle }}</strong></label>
 		<div v-for="filter in filterSection" v-bind:key="filter.id" class="filter">
-			<input v-model="filter.value" type="checkbox" id="filter.id" value="filter.id" name="filter.id">
-			<label for="filter.id">{{ filter.text }}</label>
+			<input v-model="filter.value" type="checkbox" v-bind:id="filter.id" v-bind:value="filter.id" v-bind:name="filter.id">
+			<label v-bind:for="filter.id">{{ filter.text }}</label>
 		</div>
 	</div>
 </template>
