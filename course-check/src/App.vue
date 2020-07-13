@@ -1,24 +1,26 @@
 <template>
-  <div id="app">
-	<ThePreface/>
-	<div>
+	<div id="app">
+		<ThePreface/>
 		<div>
-			<CourseFilter v-bind:filterSection="this.yearFilters" filterTitle="Filter by year:"/>
-			<CourseFilter v-bind:filterSection="this.topicFilters" filterTitle="Filter by topic:"/>
-		</div>
+			<div id="filters">
+				<CourseFilter v-bind:filterSection="this.yearFilters" filterTitle="Filter by year:"/>
+				<CourseFilter v-bind:filterSection="this.topicFilters" filterTitle="Filter by topic:"/>
+			</div>
 
-		<CourseCard 
-			v-for="course in courseKeys"
-			v-bind:key="courseData[course].courseTitleFull"
-			v-bind:courseTitleFull="courseData[course].courseTitleFull"
-			v-bind:courseDetails="courseData[course].courseDetails"
-			v-bind:coursePrerequisites="courseData[course].coursePrerequisites"
-			v-bind:tags="courseData[course].tags"
-			v-bind:visible="isFilteredOut(course)"
-		/>
+			<CourseCard 
+				v-for="course in courseKeys"
+				v-bind:key="courseData[course].courseTitleFull"
+				v-bind:courseTitleFull="courseData[course].courseTitleFull"
+				v-bind:courseDetails="courseData[course].courseDetails"
+				v-bind:coursePrerequisites="courseData[course].coursePrerequisites"
+				v-bind:tags="courseData[course].tags"
+				v-bind:visible="isFilteredOut(course)"
+			/>
+		</div>
+		<div>
+			<footer><a href="https://github.com/jessly5/Course-Check"><img src="./assets/GitHub_Logo.png" alt="GitHub Logo" height="30px"></a></footer>
+		</div>
 	</div>
-	<footer><a href="https://github.com/jessly5/Course-Check"><img src="./assets/GitHub_Logo.png" alt="GitHub Logo" height="30px"></a></footer>
-  </div>
 </template>
 
 <script>
@@ -132,7 +134,16 @@ export default {
 }
 footer {
 	text-align: center;
+	clear: both;
 }
-@media only screen and (max-width: 640px) {
+#filters{
+	width: 30%;
+	float: left;
+}
+@media only screen and (max-width: 700px) {
+	#filters{
+		width: 100%;
+		float: none;
+	}
 }
 </style>
