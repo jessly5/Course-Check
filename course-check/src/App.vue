@@ -16,11 +16,11 @@
 					v-bind:filterTitle="'Filter by topic:'"
 					v-bind:filterOptions="this.topicFilters" 
 				/>
-				
-				<span><a href="#filters"><button id="stickyTop">Back to Top</button></a></span>
 			</div>
 			
 			<div>
+				<span><a href="#filters"><button id="stickyTop">Back to Top</button></a></span>
+				
 				<h2 class="searchLabel">Search Results</h2>
 				
 				<CourseCard 
@@ -158,9 +158,10 @@ footer {
 	width: 200px;
 }
 .filterLabel {
+	text-align: center;
 }
 .searchLabel {
-	text-align: right;
+	text-align: center;
 }
 #stickyTop {
 	text-align: center;
@@ -173,8 +174,7 @@ footer {
 	color: #F7F9F9;
 	padding: 0.7em;
 	font-size: 1em;
-	float: left;
-	margin: 1em 1em 0 0;
+	float: right;
 }
 #stickyTop:hover {
 	background: #0DBDB4;
