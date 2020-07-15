@@ -1,6 +1,8 @@
 # Course-Check
 A list of courses that filters by year, topic, and prerequisite. Focus: CCIT major.
 
+[See it live here](https://jessly5.github.io/Course-Check/)
+
 ### TODO:
 
 - [x] Make a script to scrape the data into a JSON
